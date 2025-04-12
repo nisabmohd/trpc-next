@@ -3,7 +3,9 @@ import { cache } from "react";
 import superjson from "superjson";
 
 export const createTRPCContext = cache(async () => {
-  return { userId: "user_123" };
+  return {
+    // auth : ...
+  };
 });
 
 const t = initTRPC.create({
