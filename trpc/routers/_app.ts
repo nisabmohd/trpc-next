@@ -1,5 +1,7 @@
 import { z } from "zod";
 import { baseProcedure, createTRPCRouter } from "../init";
+import { delay } from "@/lib/util";
+
 export const appRouter = createTRPCRouter({
   hello: baseProcedure
     .input(
@@ -7,7 +9,8 @@ export const appRouter = createTRPCRouter({
         text: z.string(),
       })
     )
-    .query((opts) => {
+    .query(async (opts) => {
+      await delay(2000);
       return {
         greeting: `hello ${opts.input.text}`,
       };
