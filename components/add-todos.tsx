@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { trpc } from "@/trpc/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { Input } from "./ui/input";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export default function AddTodos() {
   const [input, setInput] = useState("");
@@ -18,14 +18,15 @@ export default function AddTodos() {
     },
   });
 
-  function addTodo() {
+  function addTodo(e: FormEvent) {
+    e.preventDefault();
     mutate({
       title: input,
     });
   }
 
   return (
-    <form className="grid grid-cols-4 gap-3" action={addTodo}>
+    <form className="grid grid-cols-4 gap-3" onSubmit={addTodo}>
       <Input
         value={input}
         onChange={(e) => setInput(e.target.value)}
