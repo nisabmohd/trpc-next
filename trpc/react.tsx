@@ -20,7 +20,7 @@ function getQueryClient() {
 
 function getUrl() {
   // need to change for deploy url
-  return "http://localhost:3000";
+  return "http://localhost:3000/api/trpc";
 }
 
 export function TRPCProvider(props: PropsWithChildren) {
